@@ -1,0 +1,41 @@
+.hidden{
+    display: none;
+}
+
+.sliding-panel{
+    width:100%;
+    position: fixed;
+}
+
+.sliding-panel .content{
+    background: #333;
+}
+
+.sliding-panel .content ul{
+    list-style: none;
+    display: inline-block;
+    padding:0 10px;
+}
+
+.sliding-panel .content li{
+    float: left;
+    padding:0 10px 10px 0;
+}
+
+.sliding-panel .footer{
+    height:40px;
+    width: 100%;
+    background: #000;
+}
+
+.sliding-panel .footer .drag-button{
+    padding-top:10px;
+    margin-left: 50%;
+    width: 40px;
+    height: 40px;
+    left: -20px;
+    text-align: center;
+    position: absolute;
+    color:#fff;
+    cursor: pointer;
+}
