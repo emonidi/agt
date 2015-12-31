@@ -36,6 +36,7 @@ angular.module('slidingPanel')
                 var canDrag;
                 var imageWidth = parseInt(attrs.imagewidth);
                 var elementPosition = 0;
+                var moveDirection = 0;
                 var bounds = {
                     top:0,
                     bottom:0
@@ -73,6 +74,38 @@ angular.module('slidingPanel')
                     bounds.top = elementPosition;
                 }
 
+                function animate(direction){
+                    var start = null;
+                    var reqId;
+                    function step(timestamp){
+                        if(!start) start = timestamp;
+                        var progress = timestamp - start;
+                        elementPosition = parseInt(elementPosition+(progress/25)*direction);
+                        setElementMarginTop(elem,elementPosition);
+                        if(direction !== 0 && elementPosition < bounds.bottom && elementPosition > bounds.top){
+                            reqId = window.requestAnimationFrame(step);
+                        }else{
+                            window.cancelAnimationFrame(reqId);
+                            setInBounds();
+                        }
+
+                    }
+
+                    reqId = window.requestAnimationFrame(step);
+                }
+
+
+
+                function setInBounds(){
+                    if(elementPosition < bounds.top){
+                        elementPosition = bounds.top;
+                    }else if(elementPosition > bounds.bottom){
+                        elementPosition = bounds.bottom;
+                    }
+                    setElementMarginTop(elem,elementPosition);
+
+                }
+
                 button.addEventListener('mousedown',function(){
                     canDrag = true;
                 },false);
@@ -80,21 +113,18 @@ angular.module('slidingPanel')
                 document.addEventListener('mouseup',function(){
                     canDrag = false;
                     setElementMarginTop(elem,elementPosition)
+                    animate(moveDirection);
                 });
 
                 document.addEventListener('mousemove',function(ev){
+                    ev.preventDefault();
                     if(canDrag && elementPosition >= bounds.top && elementPosition <= bounds.bottom){
                         elementPosition = elementPosition + ev.movementY// +(Math.ceil(ev.movementY+(0.05*ev.movementY)));
                         setElementMarginTop(elem,elementPosition);
+                        moveDirection = ev.movementY > 0 ? 1 : -1;
+                    }else if(canDrag){
+                        setInBounds();
                     }
-
-                    if(elementPosition < bounds.top){
-                        elementPosition = bounds.top;
-                    }else if(elementPosition > bounds.bottom){
-                        elementPosition = bounds.bottom;
-                    }
-
-
                 });
             }
         }
