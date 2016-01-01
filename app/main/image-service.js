@@ -13,6 +13,13 @@ angular.module('main')
                 'http://files.dogster.com/pix/articles/4b7012270219daffde77cda861beb83e_1272398080.jpg',
                 'http://www.guardianvetcentre.com/images/image/urinary-blockage-cat.jpg',
                 'http://cdn1.theodysseyonline.com/files/2015/11/13/6358302318413127582026168541_ChristmasSantaHatCat.png'
+            ],
+            dogs:[
+                'http://www.purina.com.au/~/media/PurinaAustralia/Images/Dog-articles-imagery/article-dog-dental.ashx?20150424T1814101961',
+                'http://weknowyourdreams.com/images/dog/dog-03.jpg',
+                'http://weknowyourdreams.com/images/dog/dog-02.jpg',
+                'http://weknowyourdreams.com/images/dog/dog-06.jpg',
+                'http://weknowyourdreams.com/images/dog/dog-05.jpg'
             ]
         }
     }]);

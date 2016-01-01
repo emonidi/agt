@@ -1,9 +1,9 @@
-<div class="sliding-panel">
+<div class="sliding-panel" images="imageUrls">
     <div class="content">
         <div class="images">
            <ul>
                <li ng-repeat="image in images">
-                   <img class="image" src="">
+                   <img class="image" ng-src="{{image}}" width="{{imageWidth}}">
                </li>
            </ul>
         </div>

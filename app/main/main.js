@@ -12,5 +12,6 @@ angular.module('main', ['ngRoute'])
     }])
 
     .controller('mainCtrl', ['$scope','imageService', function ($scope,imageService) {
-        $scope.images = imageService.cats;
+        $scope.images = imageService;
+        $scope.imageGroup = imageService['cats'];
     }]);

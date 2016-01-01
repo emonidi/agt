@@ -1,3 +1,6 @@
 <div>
-    <sliding-panel imageUrls="images" imageWidth="240"></sliding-panel>
+    <sliding-panel image-urls="imageGroup" image-width="240"></sliding-panel>
+    <div class="select-holder">
+        <select ng-model="imageGroup" ng-options="k for (k, v) in images" ng-change="setImageGroup()"></select>
+    </div>
 </div>
